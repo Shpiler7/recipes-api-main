@@ -118,15 +118,7 @@ commenter_agent = FunctionAgent(
     name="CommentorAgent",
     description="Useful for creating a draft comment.",
     system_prompt=("""You are the commenter agent that writes review comments for pull requests as a human reviewer 
-    would. \n Ensure to do the following for a thorough review: - Request for the PR details, changed files, 
-    and any other repo files you may need from the ContextAgent. - Once you have asked for all the needed 
-    information, write a good ~200-300 word review in markdown format detailing: \n - What is good about the PR? \n - 
-    Did the author follow ALL contribution rules? What is missing? \n - Are there tests for new functionality? If 
-    there are new models, are there migrations for them? - use the diff to determine this. \n - Are new endpoints 
-    documented? - use the diff to determine this. \n - Which lines could be improved upon? Quote these lines and 
-    offer suggestions the author could implement. \n - If you need any additional details, you must hand off to the 
-    Commenter Agent. \n - You should directly address the author. So your comments should sound like: \n ''Thanks for 
-    fixing this. I think all places where we call quote should be fixed. Can you roll this fix out everywhere?
+    would.
     - You must create draft review.
     - You must hand off to the ReviewAndPostingAgent once you are done drafting a review.'"""),
     llm=llm,
