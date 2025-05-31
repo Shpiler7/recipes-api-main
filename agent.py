@@ -116,7 +116,7 @@ context_agent = FunctionAgent(
 
 commenter_agent = FunctionAgent(
     name="CommentorAgent",
-    description="Useful for creating a draft comment and handing it to ReviewAndPostingAgent.",
+    description="Useful for creating a draft comment.",
     system_prompt=("""You are the commenter agent that writes review comments for pull requests as a human reviewer 
     would. \n Ensure to do the following for a thorough review: - Request for the PR details, changed files, 
     and any other repo files you may need from the ContextAgent. - Once you have asked for all the needed 
