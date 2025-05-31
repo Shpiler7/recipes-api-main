@@ -162,7 +162,7 @@ workflow_agent = AgentWorkflow(
 
 
 async def main():
-    query = "Post a review on GitHub for PR number: " + os.getenv("PR_NUMBER")
+    query = "Post a review for PR " + os.getenv("PR_NUMBER")
     print("Query is: " + query)
     prompt = RichPromptTemplate(query)
 
