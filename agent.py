@@ -9,21 +9,18 @@ from llama_index.llms.openai import OpenAI
 import dotenv
 import os
 
-dotenv.load_dotenv(dotenv_path="C:\\Test\\.env")
+dotenv.load_dotenv()
 
 llm = OpenAI(
-    model=os.getenv("OPENAI_MODEL"),
+    model="gpt-4o-mini",
     api_key=os.getenv("OPENAI_API_KEY"),
     api_base=os.getenv("OPENAI_BASE_URL"),
 )
 
 git = Github(os.getenv("GITHUB_TOKEN")) if os.getenv("GITHUB_TOKEN") else None
 
-repo_url = "https://github.com/Shpiler7/recipes-api-main.git"
-repo_name = repo_url.split('/')[-1].replace('.git', '')
-username = repo_url.split('/')[-2]
-full_repo_name = f"{username}/{repo_name}"
-repo = git.get_repo(full_repo_name)
+repository = os.getenv("REPOSITORY")
+repo = git.get_repo(repository)
 
 
 # if git is not None:
@@ -165,7 +162,7 @@ workflow_agent = AgentWorkflow(
 
 
 async def main():
-    query = input().strip()
+    query = "Write a review for PR: " + os.getenv("PR_NUMBER")
     prompt = RichPromptTemplate(query)
 
     handler = workflow_agent.run(prompt.format())
